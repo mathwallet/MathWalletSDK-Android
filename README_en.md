@@ -13,7 +13,7 @@ repositories {
  dirs 'libs'
  }
 }
-``` 
+```
 #### 3.Add implement in build.gradle of app
 ```
  implementation(name: 'mathwalletlib-release', ext: 'aar')
