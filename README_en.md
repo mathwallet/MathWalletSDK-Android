@@ -49,8 +49,8 @@ Set a custom host and scheme
  MathWalletManager.getInstance().requestLogin(this, mathWalletLogin, new MathWalletCallBack() {
  @Override
  public void callBack(Map<String, String> params, String uriString) {
- LogUtil.e(TAG, new JSONObject(params).toString());
- LogUtil.e(TAG, uriString);
+      LogUtil.e(TAG, new JSONObject(params).toString());
+      LogUtil.e(TAG, uriString);
  }
  });
 ```
@@ -74,8 +74,8 @@ Set a custom host and scheme
  MathWalletManager.getInstance().requestPay(this, mathWalletPay, new MathWalletCallBack() {
  @Override
  public void callBack(Map<String, String> params, String uriString) {
- LogUtil.e(TAG, new JSONObject(params).toString());
- LogUtil.e(TAG, uriString);
+      LogUtil.e(TAG, new JSONObject(params).toString());
+      LogUtil.e(TAG, uriString);
  }
  });
 ```
