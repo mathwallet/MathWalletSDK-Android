@@ -6,7 +6,7 @@ README_en.md
 #### Supports public chains : ETH,EOS,EOSFORCE etc.
 # How to install？
 #### 1.Copy mathwalletlib-release.aar in the libs of Sample to your app libs
-#### 2.Add in app's build.gradl：
+#### 2.Add in app's build.gradle:
 ```
 repositories {
  flatDir {
