@@ -47,11 +47,11 @@ Set a custom host and scheme
  mathWalletLogin.setLoginMemo("testing"); //notes（optional）
  mathWalletLogin.setCallback("customscheme://customhost?action=login"); //callback，scheme and host must be the same as the RouterActivity in xml
  MathWalletManager.getInstance().requestLogin(this, mathWalletLogin, new MathWalletCallBack() {
- @Override
- public void callBack(Map<String, String> params, String uriString) {
-      LogUtil.e(TAG, new JSONObject(params).toString());
-      LogUtil.e(TAG, uriString);
- }
+      @Override
+      public void callBack(Map<String, String> params, String uriString) {
+            LogUtil.e(TAG, new JSONObject(params).toString());
+            LogUtil.e(TAG, uriString);
+      }
  });
 ```
 #### 2.Transfer
@@ -72,10 +72,10 @@ Set a custom host and scheme
  mathWalletPay.setExpired(1538100593l); //transaction expire time
  mathWalletPay.setCallback("customscheme://customhost?action=transfer"); //allback，scheme and host must be the same as the RouterActivity in xml
  MathWalletManager.getInstance().requestPay(this, mathWalletPay, new MathWalletCallBack() {
- @Override
- public void callBack(Map<String, String> params, String uriString) {
-      LogUtil.e(TAG, new JSONObject(params).toString());
-      LogUtil.e(TAG, uriString);
- }
+      @Override
+      public void callBack(Map<String, String> params, String uriString) {
+            LogUtil.e(TAG, new JSONObject(params).toString());
+            LogUtil.e(TAG, uriString);
+      }
  });
 ```
