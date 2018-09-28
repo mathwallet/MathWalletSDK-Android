@@ -9,9 +9,9 @@ README_en.md
 #### 2.Add in app's build.gradle:
 ```
 repositories {
- flatDir {
- dirs 'libs'
- }
+      flatDir {
+            dirs 'libs'
+      }
 }
 ```
 #### 3.Add implement in build.gradle of app
