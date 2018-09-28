@@ -21,15 +21,15 @@ repositories {
 #### 4.copy the following code to your AndroidManifest.xml
 ```xml
  <activity android:name="com.medishares.mathwalletlib.RouterActivity">
- <intent-filter>
- <data
- android:host="customhost"
- android:scheme="customscheme"/>
- <data/>
-<category android:name="android.intent.category.DEFAULT"/>
- <action android:name="android.intent.action.VIEW"/>
- <category android:name="android.intent.category.BROWSABLE"/>
-</intent-filter>
+    <intent-filter>
+      <data
+        android:host="customhost"
+        android:scheme="customscheme"/>
+      <data/>
+      <category android:name="android.intent.category.DEFAULT"/>
+      <action android:name="android.intent.action.VIEW"/>
+      <category android:name="android.intent.category.BROWSABLE"/>
+    </intent-filter>
  </activity>
 ```
 Set a custom host and scheme
