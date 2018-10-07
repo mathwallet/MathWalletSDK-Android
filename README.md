@@ -2,6 +2,9 @@
 #### 基于SimpleWallet协议的Android SDK
 #### 支持公链 ETH,EOS,EOSFORCE 等
 
+[English Readme](https://github.com/MediShares/MathWalletSDK-Android/blob/master/README_en.md)
+
+
 # 如何安装 ？
 #### 1.复制 Sample 中 libs 下的 mathwalletlib-release.aar 到你的 app libs 下
 #### 2.在app的build.gradle中添加
