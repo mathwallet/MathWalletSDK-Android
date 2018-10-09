@@ -84,4 +84,29 @@ repositories {
      }
  });
 ```  
-
+#### 3.自定义的Action
+```java
+  MathWalletAction mathWalletAction = new MathWalletAction();
+  mathWalletAction.setBlockchain("ethereum");       //公链标识
+  mathWalletAction.setAction("transaction");        //支付
+  mathWalletAction.setDappName("麦子钱包测试SDK"); //dapp名字
+  mathWalletAction.setDappIcon("http://medishares.oss-cn-hongkong.aliyuncs.com/logo/mds-parity.png");//dapp图标Url
+  mathWalletAction.setAccount("0x5EFd3dAd23Ad3ef9C40caeaCB64CDC0e44957E5D");         //付款人
+  mathWalletAction.setDappData("麦子钱包dapp测试");//memo or data
+  mathWalletAction.setDesc("这是ACTION测试");        //交易的说明信息
+  mathWalletAction.setExpired(1538100593l);      //交易过期时间
+  ArrayList<Action> actions = new ArrayList<>();
+  Action action = new Action();
+  action.setCode("eosio");
+  action.setAction("delegatebw");
+  action.setBinargs("a09865fe4c9c0761c0a6eb6c1acda891010000000000000004454f5300000000010000000000000004454f530000000000");
+  actions.add(action);
+  mathWalletAction.setCallback("customscheme://customhost?action=transfer");   //回调，scheme和host务必和RouterActivity在xml中设置的相同
+     MathWalletManager.getInstance().requestAction(this, mathWalletAction, new MathWalletCallBack() {
+         @Override
+         public void callBack(Map<String, String> params, String uriString) {
+             LogUtil.e(TAG, new JSONObject(params).toString());
+             LogUtil.e(TAG, uriString);
+         }
+     });
+```  
