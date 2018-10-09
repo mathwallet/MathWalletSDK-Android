@@ -7,12 +7,15 @@ import android.view.View;
 
 import com.medishares.mathwalletlib.MathWalletCallBack;
 import com.medishares.mathwalletlib.MathWalletManager;
+import com.medishares.mathwalletlib.bean.Action;
+import com.medishares.mathwalletlib.bean.MathWalletAction;
 import com.medishares.mathwalletlib.bean.MathWalletLogin;
 import com.medishares.mathwalletlib.bean.MathWalletPay;
 import com.medishares.mathwalletlib.util.LogUtil;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.UUID;
 
@@ -26,8 +29,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         AppCompatButton loginBtn = findViewById(R.id.login_btn);
         AppCompatButton payBtn = findViewById(R.id.pay_btn);
+        AppCompatButton actionBtn = findViewById(R.id.action_btn);
         loginBtn.setOnClickListener(this);
         payBtn.setOnClickListener(this);
+        actionBtn.setOnClickListener(this);
         LogUtil.isDebug = true;     //打开log日志
     }
 
@@ -40,16 +45,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.pay_btn:          //支付
                 pay();
                 break;
+            case R.id.action_btn:
+                action();
+                break;
         }
+    }
+
+    private void action() {
+        MathWalletAction mathWalletAction = new MathWalletAction();
+        mathWalletAction.setBlockchain("ethereum");       //公链标识
+        mathWalletAction.setAction("transaction");        //支付
+        mathWalletAction.setDappName("麦子钱包测试SDK"); //dapp名字
+        mathWalletAction.setDappIcon("http://medishares.oss-cn-hongkong.aliyuncs.com/logo/mds-parity.png");//dapp图标Url
+        mathWalletAction.setAccount("0x5EFd3dAd23Ad3ef9C40caeaCB64CDC0e44957E5D");         //付款人
+        mathWalletAction.setDappData("麦子钱包dapp测试");//memo or data
+        mathWalletAction.setDesc("这是ACTION测试");        //交易的说明信息
+        mathWalletAction.setExpired(1538100593l);      //交易过期时间
+        ArrayList<Action> actions = new ArrayList<>();
+        Action action = new Action();
+        action.setCode("eosio");
+        action.setAction("delegatebw");
+        action.setBinargs("a09865fe4c9c0761c0a6eb6c1acda891010000000000000004454f5300000000010000000000000004454f530000000000");
+        actions.add(action);
+        mathWalletAction.setCallback("customscheme://customhost?action=transfer");   //回调，scheme和host务必和RouterActivity在xml中设置的相同
+        MathWalletManager.getInstance().requestAction(this, mathWalletAction, new MathWalletCallBack() {
+            @Override
+            public void callBack(Map<String, String> params, String uriString) {
+                LogUtil.e(TAG, new JSONObject(params).toString());
+                LogUtil.e(TAG, uriString);
+            }
+        });
     }
 
     private void pay() {
         MathWalletPay mathWalletPay = new MathWalletPay();
-        mathWalletPay.setBlockchain("eosio");       //公链标识
+        mathWalletPay.setBlockchain("ethereum");       //公链标识
         mathWalletPay.setAction("transfer");        //支付
         mathWalletPay.setDappName("麦子钱包测试SDK"); //dapp名字
         mathWalletPay.setDappIcon("http://medishares.oss-cn-hongkong.aliyuncs.com/logo/mds-parity.png");//dapp图标Url
-        mathWalletPay.setFrom("account11");         //付款人
+        mathWalletPay.setFrom("0x5EFd3dAd23Ad3ef9C40caeaCB64CDC0e44957E5D");         //付款人
         mathWalletPay.setTo("account12");           //收款人
         mathWalletPay.setAmount("1.2345");          //转账数量
         mathWalletPay.setContract("eosio.token");   //合约地址
@@ -70,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void login() {
         MathWalletLogin mathWalletLogin = new MathWalletLogin();
-        mathWalletLogin.setBlockchain("eosio");                  //公链标识
+        mathWalletLogin.setBlockchain("ethereum");                  //公链标识
         mathWalletLogin.setAction("login");                      //登录
         mathWalletLogin.setDappName("麦子钱包测试—SDK");           //dapp名字
         mathWalletLogin.setDappIcon("http://medishares.oss-cn-hongkong.aliyuncs.com/logo/mds-parity.png");//dapp图标Url
