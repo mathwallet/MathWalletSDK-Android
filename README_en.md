@@ -79,3 +79,29 @@ Set a custom host and scheme
       }
  });
 ```
+#### 3.Custom Action
+```java
+  MathWalletAction mathWalletAction = new MathWalletAction();
+  mathWalletAction.setBlockchain("eosio");       //blockchain
+  mathWalletAction.setAction("transaction");        //transaction
+  mathWalletAction.setDappName("麦子钱包测试SDK"); //dapp name
+  mathWalletAction.setDappIcon("http://medishares.oss-cn-hongkong.aliyuncs.com/logo/mds-parity.png");//dapp url
+  mathWalletAction.setFrom("eosmedishares");         //from
+  mathWalletAction.setDappData("麦子钱包dapp测试");//memo or data
+  mathWalletAction.setDesc("这是ACTION测试");        //desc
+  mathWalletAction.setExpired(1538100593l);      //expired
+  ArrayList<Action> actions = new ArrayList<>();
+  Action action = new Action();
+  action.setCode("eosio");
+  action.setAction("delegatebw");
+  action.setBinargs("a09865fe4c9c0761c0a6eb6c1acda891010000000000000004454f5300000000010000000000000004454f530000000000");
+  actions.add(action);
+  mathWalletAction.setCallback("customscheme://customhost?action=transaction");   //callback
+     MathWalletManager.getInstance().requestAction(this, mathWalletAction, new MathWalletCallBack() {
+         @Override
+         public void callBack(Map<String, String> params, String uriString) {
+             LogUtil.e(TAG, new JSONObject(params).toString());
+             LogUtil.e(TAG, uriString);
+         }
+     });
+```  
