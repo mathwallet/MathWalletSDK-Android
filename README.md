@@ -19,7 +19,8 @@ repositories {
  ```
     implementation(name: 'mathwalletlib-release', ext: 'aar')
 ```
-#### 4.复制下面的代码到你的AndroidManifest.xml
+#### 4.添加依赖库 implementation 'com.alibaba:fastjson:1.1.70.android'，如果已添加则无需重复添加
+#### 5.复制下面的代码到你的AndroidManifest.xml
 ```xml
        <activity android:name="com.medishares.mathwalletlib.RouterActivity">
             <intent-filter>
@@ -109,4 +110,10 @@ repositories {
              LogUtil.e(TAG, uriString);
          }
      });
+```  
+#### 4.Dapp跳转
+```java
+  MathWalletUrl mathWalletUrl = new MathWalletUrl("http://eosrand.io/?ref=maoguangxing");     //dappUrl
+  mathWalletUrl.setBlockchain("eosio");   //公链标识  eosio,eosforce,ethereum
+  MathWalletManager.getInstance().reqeustOpenUrl(this, mathWalletUrl);
 ```  
