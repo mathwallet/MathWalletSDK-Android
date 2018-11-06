@@ -26,8 +26,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation files('libs/fastjson-1.2.4.jar')
-
+    implementation 'com.alibaba:fastjson:1.1.70.android'
 }

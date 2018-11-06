@@ -8,6 +8,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.medishares.mathwalletlib.bean.MathWalletAction;
 import com.medishares.mathwalletlib.bean.MathWalletLogin;
 import com.medishares.mathwalletlib.bean.MathWalletPay;
+import com.medishares.mathwalletlib.bean.MathWalletUrl;
 import com.medishares.mathwalletlib.util.LogUtil;
 
 import java.io.UnsupportedEncodingException;
@@ -100,7 +101,7 @@ public class MathWalletManager implements MathWalletApi {
 
     @Override
     public void requestAction(Context context, MathWalletAction mathWalletAction, MathWalletCallBack callBack) {
-        if (context!=null && mathWalletAction!=null && callBack!=null) {
+        if (context != null && mathWalletAction != null && callBack != null) {
             this.mMathWalletCallBack = callBack;
             String actionJson = JSONObject.toJSONString(mathWalletAction);
             requestUri(context, actionJson);
@@ -109,7 +110,15 @@ public class MathWalletManager implements MathWalletApi {
         }
     }
 
-
+    @Override
+    public void reqeustOpenUrl(Context context, MathWalletUrl mathWalletUrl) {
+        if (context != null && mathWalletUrl != null) {
+            String actionJson = JSONObject.toJSONString(mathWalletUrl);
+            requestUri(context, actionJson);
+        } else {
+            LogUtil.e(TAG, "context or mathWalletUrl is null");
+        }
+    }
 
     private void requestUri(Context context, String json) {
         StringBuilder uriBuilder = new StringBuilder();
@@ -124,8 +133,6 @@ public class MathWalletManager implements MathWalletApi {
             LogUtil.e(TAG, "UnsupportedEncodingException->" + e.getLocalizedMessage());
         }
     }
-
-
 
 
 }

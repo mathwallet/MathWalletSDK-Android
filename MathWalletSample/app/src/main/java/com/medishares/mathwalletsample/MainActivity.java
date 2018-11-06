@@ -11,6 +11,7 @@ import com.medishares.mathwalletlib.bean.Action;
 import com.medishares.mathwalletlib.bean.MathWalletAction;
 import com.medishares.mathwalletlib.bean.MathWalletLogin;
 import com.medishares.mathwalletlib.bean.MathWalletPay;
+import com.medishares.mathwalletlib.bean.MathWalletUrl;
 import com.medishares.mathwalletlib.util.LogUtil;
 
 import org.json.JSONObject;
@@ -30,9 +31,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         AppCompatButton loginBtn = findViewById(R.id.login_btn);
         AppCompatButton payBtn = findViewById(R.id.pay_btn);
         AppCompatButton actionBtn = findViewById(R.id.action_btn);
+        AppCompatButton openDappBtn = findViewById(R.id.openDapp_btn);
         loginBtn.setOnClickListener(this);
         payBtn.setOnClickListener(this);
         actionBtn.setOnClickListener(this);
+        openDappBtn.setOnClickListener(this);
         LogUtil.isDebug = true;     //打开log日志
     }
 
@@ -45,10 +48,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.pay_btn:          //支付
                 pay();
                 break;
-            case R.id.action_btn:
+            case R.id.action_btn:       //自定义action
                 action();
                 break;
+            case R.id.openDapp_btn:     //openDapp
+                openDapp();
+                break;
         }
+    }
+
+    private void openDapp() {
+        MathWalletUrl mathWalletUrl = new MathWalletUrl("http://eosrand.io/?ref=maoguangxing");     //dappUrl
+        mathWalletUrl.setBlockchain("eosio");   //公链标识
+        MathWalletManager.getInstance().reqeustOpenUrl(this, mathWalletUrl);
     }
 
     private void action() {
@@ -79,13 +91,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void pay() {
         MathWalletPay mathWalletPay = new MathWalletPay();
-        mathWalletPay.setBlockchain("ethereum");       //公链标识
+        mathWalletPay.setBlockchain("eosio");       //公链标识
         mathWalletPay.setAction("transfer");        //支付
         mathWalletPay.setDappName("麦子钱包测试SDK"); //dapp名字
         mathWalletPay.setDappIcon("http://medishares.oss-cn-hongkong.aliyuncs.com/logo/mds-parity.png");//dapp图标Url
-        mathWalletPay.setFrom("0x5EFd3dAd23Ad3ef9C40caeaCB64CDC0e44957E5D");         //付款人
-        mathWalletPay.setTo("account12");           //收款人
-        mathWalletPay.setAmount("1.2345");          //转账数量
+        mathWalletPay.setFrom("");         //付款人
+        mathWalletPay.setTo("maoguangxing");           //收款人
+        mathWalletPay.setAmount("0.0001");          //转账数量
         mathWalletPay.setContract("eosio.token");   //合约地址
         mathWalletPay.setSymbol("EOS");             //token名称
         mathWalletPay.setPrecision(4);              //转账token精度
