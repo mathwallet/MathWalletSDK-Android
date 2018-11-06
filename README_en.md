@@ -105,3 +105,9 @@ Set a custom host and scheme
          }
      });
 ```  
+#### 4.Dapp跳转
+```java
+  MathWalletUrl mathWalletUrl = new MathWalletUrl("http://eosrand.io/?ref=maoguangxing");     //dappUrl
+  mathWalletUrl.setBlockchain("eosio");   //公链标识  eosio,eosforce,ethereum
+  MathWalletManager.getInstance().reqeustOpenUrl(this, mathWalletUrl);
+```  
