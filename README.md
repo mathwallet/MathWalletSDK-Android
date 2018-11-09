@@ -102,6 +102,7 @@ repositories {
   action.setAction("delegatebw");
   action.setBinargs("a09865fe4c9c0761c0a6eb6c1acda891010000000000000004454f5300000000010000000000000004454f530000000000");
   actions.add(action);
+  mathWalletAction.setActions(actions);
   mathWalletAction.setCallback("customscheme://customhost?action=transaction");   //回调，scheme和host务必和RouterActivity在xml中设置的相同
      MathWalletManager.getInstance().requestAction(this, mathWalletAction, new MathWalletCallBack() {
          @Override
