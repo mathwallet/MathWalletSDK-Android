@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void openDapp() {
         MathWalletUrl mathWalletUrl = new MathWalletUrl("http://eosrand.io/?ref=maoguangxing");     //dappUrl
-        mathWalletUrl.setBlockchain("ethereum");   //公链标识
+        mathWalletUrl.setBlockchain("EOS");   //公链标识
         MathWalletManager.getInstance().reqeustOpenUrl(this, mathWalletUrl);
     }
 
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mathWalletAction.setAction("transaction");        //支付
         mathWalletAction.setDappName("麦子钱包测试SDK"); //dapp名字
         mathWalletAction.setDappIcon("http://medishares.oss-cn-hongkong.aliyuncs.com/logo/mds-parity.png");//dapp图标Url
-        mathWalletAction.setFrom("0x5EFd3dAd23Ad3ef9C40caeaCB64CDC0e44957E5D");         //付款人
+        mathWalletAction.setFrom("maoguangxing");         //付款人
         mathWalletAction.setDappData("麦子钱包dapp测试");//memo or data
         mathWalletAction.setDesc("这是ACTION测试");        //交易的说明信息
         mathWalletAction.setExpired(1538100593l);      //交易过期时间
@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         action.setAction("delegatebw");
         action.setBinargs("a09865fe4c9c0761c0a6eb6c1acda891010000000000000004454f5300000000010000000000000004454f530000000000");
         actions.add(action);
+        mathWalletAction.setActions(actions);
         mathWalletAction.setCallback("customscheme://customhost?action=transaction");   //回调，scheme和host务必和RouterActivity在xml中设置的相同
         MathWalletManager.getInstance().requestAction(this, mathWalletAction, new MathWalletCallBack() {
             @Override
@@ -116,12 +117,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void login() {
         MathWalletLogin mathWalletLogin = new MathWalletLogin();
-        mathWalletLogin.setBlockchain("ethereum");                  //公链标识
+        mathWalletLogin.setBlockchain("eosio");                  //公链标识
         mathWalletLogin.setAction("login");                      //登录
         mathWalletLogin.setDappName("麦子钱包测试—SDK");           //dapp名字
         mathWalletLogin.setDappIcon("http://medishares.oss-cn-hongkong.aliyuncs.com/logo/mds-parity.png");//dapp图标Url
         mathWalletLogin.setUuID(UUID.randomUUID().toString());   //登录验证唯一标识
-        mathWalletLogin.setLoginUrl("http://www.medishares.org");//service生成，用于接收此次登录验证的URL
+        mathWalletLogin.setLoginUrl(null);//service生成，用于接收此次登录验证的URL
         mathWalletLogin.setExpired(1538100593l);                 //登录过期时间
         mathWalletLogin.setLoginMemo("这是登录测试");              //备注信息，可选
         mathWalletLogin.setCallback("customscheme://customhost?action=login");                //回调，scheme和host务必和RouterActivity在xml中设置的相同
