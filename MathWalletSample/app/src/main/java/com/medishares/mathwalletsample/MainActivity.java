@@ -59,8 +59,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void openDapp() {
         MathWalletUrl mathWalletUrl = new MathWalletUrl("http://eosrand.io/?ref=maoguangxing");     //dappUrl
-        mathWalletUrl.setBlockchain("EOS");   //公链标识
-        MathWalletManager.getInstance().reqeustOpenUrl(this, mathWalletUrl);
+        mathWalletUrl.setBlockchain("eosio");   //公链标识
+        mathWalletUrl.setCallback("customscheme://customhost?action=openurl");
+        MathWalletManager.getInstance().reqeustOpenUrl(this, mathWalletUrl, new MathWalletCallBack() {
+            @Override
+            public void callBack(Map<String, String> params, String uriString) {
+                LogUtil.e(TAG, new JSONObject(params).toString());
+                LogUtil.e(TAG, uriString);
+            }
+        });
     }
 
     private void action() {
