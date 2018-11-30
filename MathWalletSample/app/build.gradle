@@ -33,4 +33,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation(name: 'mathwalletlib-release', ext: 'aar')
     implementation 'com.alibaba:fastjson:1.1.70.android'
+//    compile project(':mathwalletlib')
 }
