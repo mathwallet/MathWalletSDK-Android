@@ -1,6 +1,6 @@
 # MathWalletSDK-Android
 #### 基于SimpleWallet协议的Android SDK
-#### 支持公链 ETH,EOS,EOSFORCE 等
+#### 支持公链 ETH,EOS,EOSFORCE,TRX等
 
 [English Readme](https://github.com/MediShares/MathWalletSDK-Android/blob/master/README_en.md)
 
