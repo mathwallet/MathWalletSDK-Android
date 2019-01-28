@@ -39,4 +39,12 @@
         android:layout_marginTop="16dp"
         android:text="open Dapp"
         app:layout_constraintTop_toBottomOf="@+id/action_btn"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/signMessage_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:text="signMessage"
+        app:layout_constraintTop_toBottomOf="@+id/openDapp_btn"/>
 </android.support.constraint.ConstraintLayout>

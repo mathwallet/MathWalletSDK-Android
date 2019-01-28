@@ -12,6 +12,7 @@ import com.medishares.mathwalletlib.bean.MathTrxParameter;
 import com.medishares.mathwalletlib.bean.MathWalletAction;
 import com.medishares.mathwalletlib.bean.MathWalletLogin;
 import com.medishares.mathwalletlib.bean.MathWalletPay;
+import com.medishares.mathwalletlib.bean.MathWalletSignMessage;
 import com.medishares.mathwalletlib.bean.MathWalletUrl;
 import com.medishares.mathwalletlib.util.LogUtil;
 
@@ -33,10 +34,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         AppCompatButton payBtn = findViewById(R.id.pay_btn);
         AppCompatButton actionBtn = findViewById(R.id.action_btn);
         AppCompatButton openDappBtn = findViewById(R.id.openDapp_btn);
+        AppCompatButton signMessageBtn = findViewById(R.id.signMessage_btn);
         loginBtn.setOnClickListener(this);
         payBtn.setOnClickListener(this);
         actionBtn.setOnClickListener(this);
         openDappBtn.setOnClickListener(this);
+        signMessageBtn.setOnClickListener(this);
         LogUtil.isDebug = true;     //打开log日志
     }
 
@@ -55,7 +58,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.openDapp_btn:     //openDapp
                 openDapp();
                 break;
+            case R.id.signMessage_btn:     //openDapp
+                signMessage();
+                break;
         }
+    }
+
+    private void signMessage() {
+        MathWalletSignMessage mathWalletSignMessage = new MathWalletSignMessage();
+        mathWalletSignMessage.setCallback("customscheme://customhost?action=signMessage");
+        mathWalletSignMessage.setHex(false);
+        mathWalletSignMessage.setMessage("这是一条测试数据");
+        mathWalletSignMessage.setBlockchain("eosio");
+        mathWalletSignMessage.setDappIcon("http://medishares.oss-cn-hongkong.aliyuncs.com/logo/mds-parity.png");//dapp图标Url
+        mathWalletSignMessage.setDappName("这是测试的签名数据");
+        MathWalletManager.getInstance().requestSignMessage(this, mathWalletSignMessage, new MathWalletCallBack() {
+            @Override
+            public void callBack(Map<String, String> params, String uriString) {
+                LogUtil.e(TAG, new JSONObject(params).toString());
+                LogUtil.e(TAG, uriString);
+            }
+        });
     }
 
     private void openDapp() {
