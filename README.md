@@ -118,3 +118,21 @@ repositories {
   mathWalletUrl.setBlockchain("eosio");   //公链标识  eosio,eosforce,ethereum
   MathWalletManager.getInstance().reqeustOpenUrl(this, mathWalletUrl);
 ```  
+
+#### 5.消息签名
+```java
+   MathWalletSignMessage mathWalletSignMessage = new MathWalletSignMessage();
+        mathWalletSignMessage.setCallback("customscheme://customhost?action=signMessage");
+        mathWalletSignMessage.setHex(false);           
+        mathWalletSignMessage.setMessage("这是一条测试数据");
+        mathWalletSignMessage.setBlockchain("eosio");
+        mathWalletSignMessage.setDappIcon("http://medishares.oss-cn-hongkong.aliyuncs.com/logo/mds-parity.png");//dapp图标Url
+        mathWalletSignMessage.setDappName("这是测试的签名数据");
+        MathWalletManager.getInstance().requestSignMessage(this, mathWalletSignMessage, new MathWalletCallBack() {
+            @Override
+            public void callBack(Map<String, String> params, String uriString) {
+                LogUtil.e(TAG, new JSONObject(params).toString());
+                LogUtil.e(TAG, uriString);
+            }
+        });
+```  
