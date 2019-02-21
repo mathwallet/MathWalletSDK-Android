@@ -47,13 +47,14 @@ repositories {
   mathWalletLogin.setDappName("麦子钱包测试—SDK");           //dapp名字
   mathWalletLogin.setDappIcon("http://medishares.oss-cn-hongkong.aliyuncs.com/logo/mds-parity.png");//dapp图标Url
   mathWalletLogin.setUuID(UUID.randomUUID().toString());   //登录验证唯一标识
-  mathWalletLogin.setLoginUrl("http://www.medishares.org");//service生成，用于接收此次登录验证的URL
+  mathWalletLogin.setLoginUrl(null);//app跳转登录， 则设置loginUrl 为空，
   mathWalletLogin.setExpired(1538100593l);                            //登录过期时间
   mathWalletLogin.setLoginMemo("这是登录测试");               //备注信息，可选
   mathWalletLogin.setCallback("customscheme://customhost?action=login");                //回调，scheme和host务必和RouterActivity在xml中设置的相同
   MathWalletManager.getInstance().requestLogin(this, mathWalletLogin, new MathWalletCallBack() {
       @Override
       public void callBack(Map<String, String> params, String uriString) {
+      //回调返回账号名或地址，如果是eos 则附带权限
           LogUtil.e(TAG, new JSONObject(params).toString());
           LogUtil.e(TAG, uriString);
       }
