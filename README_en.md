@@ -42,13 +42,14 @@ Set a custom host and scheme
  mathWalletLogin.setDappName("Math Wallet testing - SDK"); //dapp name
  mathWalletLogin.setDappIcon("http://medishares.oss-cn-hongkong.aliyuncs.com/logo/mds-parity.png");//dapp logo Url
  mathWalletLogin.setUuID(UUID.randomUUID().toString()); //only uuid to verify login
- mathWalletLogin.setLoginUrl("http://www.medishares.org");//serviceissued，URL to receive the current login verification
+ mathWalletLogin.setLoginUrl(null);  app login setLoginUrl is null!!!!!!!
  mathWalletLogin.setExpired(1538100593l); //login expire time
  mathWalletLogin.setLoginMemo("testing"); //notes（optional）
  mathWalletLogin.setCallback("customscheme://customhost?action=login"); //callback，scheme and host must be the same as the RouterActivity in xml
  MathWalletManager.getInstance().requestLogin(this, mathWalletLogin, new MathWalletCallBack() {
       @Override
       public void callBack(Map<String, String> params, String uriString) {
+            // callBack accountName or address, and permission if is eos blockchain
             LogUtil.e(TAG, new JSONObject(params).toString());
             LogUtil.e(TAG, uriString);
       }
