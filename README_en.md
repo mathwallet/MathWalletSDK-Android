@@ -42,7 +42,7 @@ Set a custom host and scheme
  mathWalletLogin.setDappName("Math Wallet testing - SDK"); //dapp name
  mathWalletLogin.setDappIcon("http://medishares.oss-cn-hongkong.aliyuncs.com/logo/mds-parity.png");//dapp logo Url
  mathWalletLogin.setUuID(UUID.randomUUID().toString()); //only uuid to verify login
- mathWalletLogin.setLoginUrl(null);  app login setLoginUrl is null!!!!!!!
+ mathWalletLogin.setLoginUrl(null);  //app login setLoginUrl is null!!!!!!!
  mathWalletLogin.setExpired(1538100593l); //login expire time
  mathWalletLogin.setLoginMemo("testing"); //notes（optional）
  mathWalletLogin.setCallback("customscheme://customhost?action=login"); //callback，scheme and host must be the same as the RouterActivity in xml
