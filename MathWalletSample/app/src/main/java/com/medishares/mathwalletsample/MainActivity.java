@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void signMessage() {
         MathWalletSignMessage mathWalletSignMessage = new MathWalletSignMessage();
         mathWalletSignMessage.setCallback("customscheme://customhost?action=signMessage");
-        mathWalletSignMessage.setHex(false);
+        mathWalletSignMessage.setIsHash(true);
         mathWalletSignMessage.setMessage("这是一条测试数据");
         mathWalletSignMessage.setBlockchain("eosio");
         mathWalletSignMessage.setDappIcon("http://medishares.oss-cn-hongkong.aliyuncs.com/logo/mds-parity.png");//dapp图标Url

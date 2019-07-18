@@ -25,12 +25,12 @@ public class MathWalletSignMessage extends BaseMathWallet {
         this.callback = callback;
     }
 
-    public boolean isHash() {
+    public boolean getIsHash() {
         return isHash;
     }
 
-    public void setHash(boolean hash) {
-        isHash = hash;
+    public void setIsHash(boolean isHash) {
+        this.isHash = isHash;
     }
 
     public String getMessage() {

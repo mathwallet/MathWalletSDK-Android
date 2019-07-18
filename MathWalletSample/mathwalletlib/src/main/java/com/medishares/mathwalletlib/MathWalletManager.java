@@ -8,6 +8,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.medishares.mathwalletlib.bean.MathWalletAction;
 import com.medishares.mathwalletlib.bean.MathWalletLogin;
 import com.medishares.mathwalletlib.bean.MathWalletPay;
+import com.medishares.mathwalletlib.bean.MathWalletSignMessage;
 import com.medishares.mathwalletlib.bean.MathWalletUrl;
 import com.medishares.mathwalletlib.util.LogUtil;
 
@@ -116,6 +117,17 @@ public class MathWalletManager implements MathWalletApi {
             if (callBack != null)
                 this.mMathWalletCallBack = callBack;
             String actionJson = JSONObject.toJSONString(mathWalletUrl);
+            requestUri(context, actionJson);
+        } else {
+            LogUtil.e(TAG, "context or mathWalletUrl is null");
+        }
+    }
+
+    @Override
+    public void requestSignMessage(Context context, MathWalletSignMessage mathWalletSignMessage, MathWalletCallBack callBack) {
+        if (context != null && mathWalletSignMessage != null) {
+            this.mMathWalletCallBack = callBack;
+            String actionJson = JSONObject.toJSONString(mathWalletSignMessage);
             requestUri(context, actionJson);
         } else {
             LogUtil.e(TAG, "context or mathWalletUrl is null");

@@ -5,6 +5,7 @@ import android.content.Context;
 import com.medishares.mathwalletlib.bean.MathWalletAction;
 import com.medishares.mathwalletlib.bean.MathWalletLogin;
 import com.medishares.mathwalletlib.bean.MathWalletPay;
+import com.medishares.mathwalletlib.bean.MathWalletSignMessage;
 import com.medishares.mathwalletlib.bean.MathWalletUrl;
 
 public interface MathWalletApi {
@@ -16,4 +17,6 @@ public interface MathWalletApi {
     void requestAction(Context context, MathWalletAction mathWalletAction, MathWalletCallBack callBack);
 
     void reqeustOpenUrl(Context context, MathWalletUrl mathWalletUrl,MathWalletCallBack callBack);
+
+    void requestSignMessage(Context context, MathWalletSignMessage mathWalletSignMessage, MathWalletCallBack callBack);
 }
