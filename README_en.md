@@ -1,6 +1,3 @@
-@@ -1,132 +0,0 @@
-README_en.md
-
 
 # MathWalletSDK-Android
 #### Android SDK based on SimpleWallet protocol
