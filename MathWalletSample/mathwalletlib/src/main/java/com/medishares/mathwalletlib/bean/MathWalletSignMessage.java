@@ -29,8 +29,8 @@ public class MathWalletSignMessage extends BaseMathWallet {
         return isHash;
     }
 
-    public void setIsHash(boolean isHash) {
-        this.isHash = isHash;
+    public void setIsHash(boolean hash) {
+        isHash = hash;
     }
 
     public String getMessage() {

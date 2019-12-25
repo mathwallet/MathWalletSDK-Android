@@ -134,6 +134,7 @@ public class MathWalletManager implements MathWalletApi {
         }
     }
 
+
     private void requestUri(Context context, String json) {
         StringBuilder uriBuilder = new StringBuilder();
         uriBuilder.append(Constants.MATHWALLET_PARAM_URL);
