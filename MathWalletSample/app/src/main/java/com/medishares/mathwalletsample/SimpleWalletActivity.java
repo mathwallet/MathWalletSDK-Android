@@ -88,12 +88,12 @@ public class SimpleWalletActivity extends AppCompatActivity
         mathWalletSignMessage.setDappIcon("http://medishares.oss-cn-hongkong.aliyuncs.com/logo/mds-parity.png");//dapp图标Url
         mathWalletSignMessage.setDappName("这是测试的签名数据");
 
-        //        mathWalletSignMessage.setIsHash(false);
-        //        mathWalletSignMessage.setMessage("这是一条测试数据");
+                mathWalletSignMessage.setIsHash(false);
+                mathWalletSignMessage.setMessage("这是一条测试数据");
         //
         //hash 为true，则 message 需要先处理
-        //                    mathWalletSignMessage.setIsHash(true);
-        //                    mathWalletSignMessage.setMessage(SHA256Util.getSHA256StrJava("这是一条测试数据"));
+                            mathWalletSignMessage.setIsHash(false);
+                            mathWalletSignMessage.setMessage(SHA256Util.getSHA256StrJava("这是一条测试数据"));
 
         if (CHAIN_EOS.equals(mBlockchain)) {
             mathWalletSignMessage.setBlockchain("eosio");                  //公链标识
@@ -140,17 +140,7 @@ public class SimpleWalletActivity extends AppCompatActivity
             actions.add(action);
             mathWalletAction.setActions(actions);
 
-        } else if (CHAIN_ETH.equals(mBlockchain)) {                     //和transfer的类似
-            mathWalletAction.setBlockchain("ethereum");
-            //eth转账
-            mathWalletAction.setAmount("0.0001");                     //转账数量
-            mathWalletAction.setTo("0xd13b6B5f5EDc411d510b14B9CDFDEbf8c0D42Ba5");  //收款地址
-            mathWalletAction.setDappData("");                              //eth转账无需填写data
-
-            //erc20 contract
-            //            mathWalletPay.setAmount("0");                               //转账0Eth
-            //            mathWalletPay.setTo("0x66186008C1050627F979d464eABb258860563dbE");  //收款地址 为合约地址！！！
-            //            mathWalletPay.setDappData("0xa9059cbb000000000000000000000000e93381fb4c4f14bda253907b18fad305d799241a0000000000000000000000000000000000000000000000559906e61975cc0000");                              //data 为执行erc20 contract的data method
+        } else if (CHAIN_ETH.equals(mBlockchain)) {                     //参考 eth 的 pay 方式
 
         } else if (CHAIN_TRX.equals(mBlockchain)) {
             mathWalletAction.setBlockchain("tron");
@@ -226,14 +216,14 @@ public class SimpleWalletActivity extends AppCompatActivity
 
 
             //eth转账
-            mathWalletPay.setAmount("0.0001");                     //转账数量
-            mathWalletPay.setTo("0xd13b6B5f5EDc411d510b14B9CDFDEbf8c0D42Ba5");  //收款地址
-            mathWalletPay.setDappData("");                              //eth转账无需填写data
+//            mathWalletPay.setAmount("0.0001");                     //转账数量
+//            mathWalletPay.setTo("0xd13b6B5f5EDc411d510b14B9CDFDEbf8c0D42Ba5");  //收款地址
+//            mathWalletPay.setDappData("");                              //eth转账无需填写data
 
             //erc20转账
-            //            mathWalletPay.setAmount("0");                               //转账0Eth
-            //            mathWalletPay.setTo("0x66186008C1050627F979d464eABb258860563dbE");  //收款地址 为合约地址！！！
-            //            mathWalletPay.setDappData("0xa9059cbb000000000000000000000000e93381fb4c4f14bda253907b18fad305d799241a0000000000000000000000000000000000000000000000559906e61975cc0000");                              //data 为执行erc20转账的data transfer(address _to, uint256 _value)
+            mathWalletPay.setAmount("0.0001");                               //转账0Eth
+            mathWalletPay.setTo("0x08d967bb0134f2d07f7cfb6e246680c53927dd30");  //收款地址 为合约地址！！！
+            mathWalletPay.setDappData("0xa9059cbb000000000000000000000000e93381fb4c4f14bda253907b18fad305d799241a0000000000000000000000000000000000000000000000559906e61975cc0000");                              //data 为执行erc20转账的data transfer(address _to, uint256 _value)
 
         } else if (CHAIN_EOSFORCE.equals(mBlockchain)) {
             mathWalletPay.setBlockchain("eosforce");
