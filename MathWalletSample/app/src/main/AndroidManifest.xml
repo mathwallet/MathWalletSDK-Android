@@ -12,7 +12,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="landscape">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +22,7 @@
 
         <activity
             android:name="com.medishares.mathwalletlib.RouterActivity"
-            android:screenOrientation="landscape">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <data
                     android:host="customhost"
@@ -37,7 +37,7 @@
         </activity>
         <activity
             android:name=".SimpleWalletActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="portrait" />
 
     </application>
 

@@ -75,7 +75,7 @@ public class SimpleWalletActivity extends AppCompatActivity
             case R.id.openDapp_btn:     //openDapp
                 openDapp();
                 break;
-            case R.id.signMessage_btn:     //openDapp
+            case R.id.signMessage_btn:     //signMessage
                 signMessage();
                 break;
         }
@@ -88,12 +88,9 @@ public class SimpleWalletActivity extends AppCompatActivity
         mathWalletSignMessage.setDappIcon("http://medishares.oss-cn-hongkong.aliyuncs.com/logo/mds-parity.png");//dapp图标Url
         mathWalletSignMessage.setDappName("这是测试的签名数据");
 
-                mathWalletSignMessage.setIsHash(false);
-                mathWalletSignMessage.setMessage("这是一条测试数据");
-        //
-        //hash 为true，则 message 需要先处理
-                            mathWalletSignMessage.setIsHash(false);
-                            mathWalletSignMessage.setMessage(SHA256Util.getSHA256StrJava("这是一条测试数据"));
+        //isHash 表示 message 是否已经 Hash处理过，
+        //                            mathWalletSignMessage.setIsHash(false);
+        //                            mathWalletSignMessage.setMessage("这是一条测试数据");
 
         if (CHAIN_EOS.equals(mBlockchain)) {
             mathWalletSignMessage.setBlockchain("eosio");                  //公链标识
@@ -216,9 +213,9 @@ public class SimpleWalletActivity extends AppCompatActivity
 
 
             //eth转账
-//            mathWalletPay.setAmount("0.0001");                     //转账数量
-//            mathWalletPay.setTo("0xd13b6B5f5EDc411d510b14B9CDFDEbf8c0D42Ba5");  //收款地址
-//            mathWalletPay.setDappData("");                              //eth转账无需填写data
+            //            mathWalletPay.setAmount("0.0001");                     //转账数量
+            //            mathWalletPay.setTo("0xd13b6B5f5EDc411d510b14B9CDFDEbf8c0D42Ba5");  //收款地址
+            //            mathWalletPay.setDappData("");                              //eth转账无需填写data
 
             //erc20转账
             mathWalletPay.setAmount("0.0001");                               //转账0Eth
