@@ -6,7 +6,7 @@
 [English Readme](https://github.com/mathwallet/MathWalletSDK-Android/blob/master/README_en.md)
 
 
-# 如何安装 ？
+# 如何安装 ？ ( how to install ? )
 #### 1.复制 Sample 中 libs 下的 mathwalletlib-release.aar 到你的 app libs 下
 #### 2.在app的build.gradle中添加
 ```
@@ -20,8 +20,11 @@ repositories {
  ```
     implementation(name: 'mathwalletlib-release', ext: 'aar')
 ```
-#### 4.添加依赖库 implementation 'com.alibaba:fastjson:1.1.70.android'，如果已添加则无需重复添加
-#### 5.复制下面的代码到你的AndroidManifest.xml
+#### 4.添加依赖库 ( Add dependency library )
+#### implementation 'com.alibaba:fastjson:1.1.70.android'
+#### 如果已添加则无需重复添加 ( If it has already been added, there is no need to add it again )
+#### 5.复制下面的代码到你的 ( Copy the code below to your )
+#### AndroidManifest.xml
 ```xml
        <activity android:name="com.medishares.mathwalletlib.RouterActivity">
             <intent-filter>
@@ -40,7 +43,7 @@ repositories {
 设置自定义的host以及scheme
 
 # 如何使用 ？
-#### 1.登录
+#### 1.登录 ( Log in ) 
 ```java
   MathWalletLogin mathWalletLogin = new MathWalletLogin();
   mathWalletLogin.setBlockchain("eosio");                  //公链标识（eosio、eosforce、ethereum等）
@@ -62,7 +65,7 @@ repositories {
   });
 ```
 
-#### 2.转账
+#### 2.转账 ( Transfer )
 ```java
  MathWalletPay mathWalletPay = new MathWalletPay();
  mathWalletPay.setBlockchain("eosio");       //公链标识（eosio、eosforce、ethereum等）
@@ -87,7 +90,7 @@ repositories {
      }
  });
 ```  
-#### 3.自定义的Action
+#### 3.自定义的Action ( Customized Actions )
 ```java
   MathWalletAction mathWalletAction = new MathWalletAction();
   mathWalletAction.setBlockchain("eosio");       //公链标识
@@ -121,7 +124,7 @@ repositories {
   MathWalletManager.getInstance().reqeustOpenUrl(this, mathWalletUrl);
 ```  
 
-#### 5.消息签名
+#### 5.消息签名 ( Message signature )
 ```java
    MathWalletSignMessage mathWalletSignMessage = new MathWalletSignMessage();
         mathWalletSignMessage.setCallback("customscheme://customhost?action=signMessage");
